@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">deejai</string>
+    <string name="internet_failure">Erro de conexão, por favor, tente novamente.</string>
 </resources>
