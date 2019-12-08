@@ -31,6 +31,17 @@ class SplashPresenter (private val view : ViewModel, private val context : Conte
         }
     }
 
+    override fun onTokenReceived(token : String) {
+        storeToken(token)
+        view.doAuthentication(token)
+    }
+
+    private fun storeToken(token : String) =
+        context.getSharedPreferences(SPOTIFY_CREDENTIALS, MODE_PRIVATE)
+            .edit()
+            .putString(SPOTIFY_TOKEN, token)
+            .apply()
+
     private fun getToken() =
         context.getSharedPreferences(SPOTIFY_CREDENTIALS, MODE_PRIVATE)
             .getString(SPOTIFY_TOKEN, NO_TOKEN)

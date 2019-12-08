@@ -10,6 +10,7 @@ interface SplashContract {
 
     interface Presenter {
         fun tryAuthenticate()
+        fun onTokenReceived(token : String)
     }
 
 }
