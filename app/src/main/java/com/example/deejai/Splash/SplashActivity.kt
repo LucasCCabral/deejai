@@ -11,6 +11,7 @@ import com.spotify.sdk.android.authentication.AuthenticationResponse
 import android.content.Intent
 import android.util.Log
 import com.example.deejai.Constants.DEVELOPER_LOG
+import com.example.deejai.RoomSelection.SelectRoomActivity
 
 class SplashActivity : AppCompatActivity(), ViewModel {
 
@@ -33,6 +34,9 @@ class SplashActivity : AppCompatActivity(), ViewModel {
     }
 
     override fun doAuthentication(token : String) {
+        intent = Intent(this, SelectRoomActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     override fun onUnauthenticated() {

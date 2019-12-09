@@ -140,7 +140,7 @@ import java.util.List;
  * <pre>{@code
  * // The activity that should process the response from auth flow
  * <activity
- *     android:name=".MainActivity"
+ *     android:name=".SelectRoomActivity"
  *     android:label="@string/app_name"
  *     android:launchMode="singleInstance" >
  *     <intent-filter>
@@ -162,7 +162,7 @@ import java.util.List;
  * </activity>
  * }</pre>
  * <p>
- * To process the result the receiving activity ({@code MainActivity} in this example) needs to override one of its
+ * To process the result the receiving activity ({@code SelectRoomActivity} in this example) needs to override one of its
  * callbacks. With launch mode set to {@code singleInstance} this callback is {@code onNewIntent}:
  *
  * <pre><code>

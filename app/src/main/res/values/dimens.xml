@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="room_image_width">100dp</dimen>
+    <dimen name="room_image_height">100dp</dimen>
+    <dimen name="room_card_view_margin">5dp</dimen>
+    <dimen name="room_name_size">20sp</dimen>
+    <dimen name="room_distance_size">14sp</dimen>
+</resources>
