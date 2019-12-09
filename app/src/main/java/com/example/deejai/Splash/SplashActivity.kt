@@ -11,7 +11,6 @@ import com.spotify.sdk.android.authentication.AuthenticationResponse
 import android.content.Intent
 import android.util.Log
 import com.example.deejai.Constants.DEVELOPER_LOG
-
 class SplashActivity : AppCompatActivity(), ViewModel {
 
     private lateinit var presenter : SplashPresenter
@@ -67,5 +66,4 @@ class SplashActivity : AppCompatActivity(), ViewModel {
             }
         }
     }
-
 }
