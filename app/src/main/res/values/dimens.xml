@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="room_image_width">100dp</dimen>
-    <dimen name="room_image_height">100dp</dimen>
-    <dimen name="room_card_view_margin">5dp</dimen>
+    <dimen name="room_image_width">75dp</dimen>
+    <dimen name="room_image_height">75dp</dimen>
+    <dimen name="room_card_view_margin">10dp</dimen>
+    <dimen name="room_card_view_roundness">8dp</dimen>
+    <dimen name="room_card_view_elevation">5dp</dimen>
+    <dimen name="breathing_space">10dp</dimen>
     <dimen name="room_name_size">20sp</dimen>
     <dimen name="room_distance_size">14sp</dimen>
 </resources>
