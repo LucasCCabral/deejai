@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -7,7 +8,9 @@
         android:id="@+id/room"
         android:layout_margin="@dimen/room_card_view_margin"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/room_card_view_roundness"
+        app:cardElevation="@dimen/room_card_view_elevation">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -26,6 +29,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/room_name_size"
                 android:layout_alignParentTop="true"
+                android:layout_marginTop="@dimen/breathing_space"
                 android:layout_toRightOf="@id/room_image"/>
 
             <TextView
@@ -35,6 +39,16 @@
                 android:textSize="@dimen/room_distance_size"
                 android:layout_toRightOf="@id/room_image"
                 android:layout_below="@id/room_name"/>
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/breathing_space"
+                android:layout_marginRight="@dimen/breathing_space"
+                android:background="@android:color/transparent"
+                android:layout_alignParentRight="true"
+                app:srcCompat="@drawable/question_mark"/>
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
