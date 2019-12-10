@@ -12,7 +12,7 @@ class SelectRoomPresenter(private val view: ViewModel) : Presenter {
     }
 
     override fun addNewRoom(newRoomName: String) {
-        mockRooms.add(Room(newRoomName, "1231231", R.drawable.rock_symbol))
+        mockRooms.add(Room(newRoomName, "This is a description.", "1231231", R.drawable.rock_symbol))
         view.showAvaiableRooms(mockRooms)
     }
 
