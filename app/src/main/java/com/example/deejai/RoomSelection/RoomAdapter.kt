@@ -24,7 +24,7 @@ class RoomAdapter(private val rooms : List<Room>, private val context : Context)
 
     override fun onBindViewHolder(holder : RoomViewHolder, position : Int) {
         holder.roomName.text = rooms[position].name
-        holder.roomDistance.text = rooms[position].coordinates
+        holder.roomDistance.text = rooms[position].distance
         holder.roomImage.setImageResource(rooms[position].picture)
     }
 
