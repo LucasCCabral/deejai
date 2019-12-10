@@ -10,6 +10,7 @@ interface SelectRoomContract {
     interface Presenter {
         fun listAvaiableRooms()
         fun addNewRoom(newRoomName: String)
+        fun getCoordinates()
     }
 
 }
