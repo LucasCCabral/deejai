@@ -1,5 +1,7 @@
 package com.example.deejai.RoomSelection
 
+import android.content.Context
+import android.content.Intent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -8,9 +10,12 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import android.view.LayoutInflater
+import androidx.core.content.ContextCompat.startActivity
+import androidx.recyclerview.widget.RecyclerView
+import com.example.deejai.Constants.ROOM_NAME_KEY
 import com.example.deejai.R
 
-class RoomAdapter(val rooms : List<Room>) : Adapter<RoomAdapter.RoomViewHolder>() {
+class RoomAdapter(private val rooms : List<Room>, private val context : Context) : Adapter<RoomAdapter.RoomViewHolder>() {
 
     override fun onCreateViewHolder(parent : ViewGroup, viewType : Int): RoomViewHolder {
         val v = LayoutInflater.from(parent.getContext()).inflate(R.layout.room_item, parent, false)
@@ -25,8 +30,7 @@ class RoomAdapter(val rooms : List<Room>) : Adapter<RoomAdapter.RoomViewHolder>(
 
     override fun getItemCount() = rooms.size
 
-    class RoomViewHolder internal constructor(itemView: View) :
-    ViewHolder(itemView) {
+    inner class RoomViewHolder internal constructor(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
         internal var cv: CardView
         internal var roomName : TextView
         internal var roomDistance : TextView
@@ -37,6 +41,13 @@ class RoomAdapter(val rooms : List<Room>) : Adapter<RoomAdapter.RoomViewHolder>(
             roomName = itemView.findViewById(R.id.room_name)
             roomDistance = itemView.findViewById(R.id.room_distance)
             roomImage = itemView.findViewById(R.id.room_image) as ImageView
+            itemView.setOnClickListener(this)
+        }
+
+        override fun onClick(v: View?) {
+            val intent = Intent(context, RoomPlayer::class.java)
+            intent.putExtra(ROOM_NAME_KEY, roomName.text.toString())
+            context.startActivity(intent)
         }
     }
 

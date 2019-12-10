@@ -23,7 +23,7 @@ class SelectRoomActivity : AppCompatActivity(), ViewModel {
     }
 
     override fun showAvaiableRooms(rooms: List<Room>) {
-        val adapter = RoomAdapter(rooms)
+        val adapter = RoomAdapter(rooms, this)
         roomList.adapter = adapter
     }
 
