@@ -20,6 +20,7 @@ class SelectRoomActivity : AppCompatActivity(), ViewModel {
     lateinit var roomList : RecyclerView
     lateinit var presenter : SelectRoomPresenter
     var location_global : Location = Location("")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         doAsync {
@@ -33,7 +34,7 @@ class SelectRoomActivity : AppCompatActivity(), ViewModel {
                         if (location != null) {
                             location_global = location
                             //tem que ver como vai armazenar o objeto \/
-                            //presenter.storeCoordinates(location.latitude.toString() + location.longitude.toString())
+                            presenter.storeCoordinates(location.latitude.toString() + ',' + location.longitude.toString())
                             setContentView(R.layout.select_room)
                             val linearLayoutManager = LinearLayoutManager(this@SelectRoomActivity)
                             roomList = findViewById(R.id.room_list)

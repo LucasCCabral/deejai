@@ -7,10 +7,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import android.view.LayoutInflater
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.deejai.Constants.ROOM_NAME_KEY
 import com.example.deejai.R
@@ -24,7 +22,7 @@ class RoomAdapter(private val rooms : List<Room>, private val context : Context)
 
     override fun onBindViewHolder(holder : RoomViewHolder, position : Int) {
         holder.roomName.text = rooms[position].name
-        holder.roomDistance.text = rooms[position].distance
+        holder.roomDistance.text = rooms[position].coordinates
         holder.roomImage.setImageResource(rooms[position].picture)
     }
 

@@ -4,13 +4,9 @@ import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
-import android.util.Log
-import com.example.deejai.Constants.NO_COORDINATES
 import com.example.deejai.Constants.SPOTIFY_CREDENTIALS
 import com.example.deejai.Constants.SPOTIFY_TOKEN
 import com.example.deejai.Constants.NO_TOKEN
-import com.example.deejai.Constants.USER_DISTANCE
-import com.example.deejai.Constants.USER_DATA
 import com.example.deejai.Splash.SplashContract.Presenter
 import com.example.deejai.Splash.SplashContract.ViewModel
 

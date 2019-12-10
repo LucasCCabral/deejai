@@ -1,16 +1,15 @@
 package com.example.deejai.RoomSelection
 
-
 import android.content.Context
 import android.location.Location
 import com.example.deejai.Constants
 import com.example.deejai.R
 import com.example.deejai.RoomSelection.SelectRoomContract.Presenter
 import com.example.deejai.RoomSelection.SelectRoomContract.ViewModel
+
 class SelectRoomPresenter(private val view: ViewModel, private val context : Context, private val currentCoordinates : Location) : Presenter {
 
     override fun listAvaiableRooms() {
-
         var mockRooms = ArrayList<Room>()
         var mockLocation = Location("")
         mockLocation.latitude = -8.055513
