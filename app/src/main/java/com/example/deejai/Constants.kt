@@ -6,4 +6,5 @@ object Constants {
     const val SPOTIFY_TOKEN = "spotify token"
     const val NO_TOKEN = "no token"
     const val DEVELOPER_LOG = "DEV-LOG"
+    const val ROOM_NAME_KEY = "roomName"
 }
