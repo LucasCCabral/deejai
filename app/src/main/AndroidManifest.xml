@@ -24,6 +24,7 @@
             android:name="com.spotify.sdk.android.authentication.LoginActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity android:name=".RoomSelection.RoomPlayer" />
+        <activity android:name=".AddRoomActivity" android:theme="@style/HeaderBar"></activity>
     </application>
 
 </manifest>

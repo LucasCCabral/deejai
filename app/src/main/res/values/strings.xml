@@ -4,4 +4,10 @@
     <string name="api_error">
         Houve algum erro com a API do spotify, por favor, tente novamente.
     </string>
+    <string name="add_room_instruction">
+        Pense em um nome para a sua sala e digite-o aqui.
+    </string>
+    <string name="add_room_hint">
+        Nome da sala
+    </string>
 </resources>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorGray"
+        app:titleTextColor="@color/colorWhite"
+        app:title="Adicionar uma sala"/>
+
+    <TextView
+        android:id="@+id/add_room_instruction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/medium_size_letter"
+        android:textColor="@android:color/black"
+        android:layout_margin="@dimen/breathing_space"
+        android:text="@string/add_room_instruction"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/breathing_space">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/new_room_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/add_room_hint"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+</LinearLayout>
