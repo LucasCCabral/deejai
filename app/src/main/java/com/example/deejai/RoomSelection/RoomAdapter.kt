@@ -4,8 +4,10 @@ import android.content.Context
 import android.content.Intent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import androidx.recyclerview.widget.RecyclerView.Adapter
@@ -26,21 +28,34 @@ class RoomAdapter(private val rooms : List<Room>, private val context : Context)
         holder.roomName.text = rooms[position].name
         holder.roomDistance.text = rooms[position].coordinates
         holder.roomImage.setImageResource(rooms[position].picture)
+        holder.description = rooms[position].description
     }
 
     override fun getItemCount() = rooms.size
 
     inner class RoomViewHolder internal constructor(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
+        private val ROOM_INFO = "Room Info"
+        private val EXIT = "exit"
+        var description = "No description found."
         internal var cv: CardView
         internal var roomName : TextView
         internal var roomDistance : TextView
         internal var roomImage : ImageView
+        internal var roomInfoButton : ImageButton
 
         init {
             cv = itemView.findViewById(R.id.room)
             roomName = itemView.findViewById(R.id.room_name)
             roomDistance = itemView.findViewById(R.id.room_distance)
             roomImage = itemView.findViewById(R.id.room_image) as ImageView
+            roomInfoButton = itemView.findViewById(R.id.room_info_button)
+            roomInfoButton.setOnClickListener {
+                AlertDialog.Builder(context)
+                    .setTitle(ROOM_INFO)
+                    .setMessage(description)
+                    .setNegativeButton(EXIT, null)
+                    .show()
+            }
             itemView.setOnClickListener(this)
         }
 
