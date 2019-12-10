@@ -14,10 +14,15 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 import android.view.LayoutInflater
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.example.deejai.Constants.NO_COORDINATES
 import com.example.deejai.Constants.ROOM_NAME_KEY
+import com.example.deejai.Constants.USER_DATA
+import com.example.deejai.Constants.USER_DISTANCE
 import com.example.deejai.R
 
 class RoomAdapter(private val rooms : List<Room>, private val context : Context) : Adapter<RoomAdapter.RoomViewHolder>() {
+
+    private val userCoordinates = getUserCoordinates()
 
     override fun onCreateViewHolder(parent : ViewGroup, viewType : Int): RoomViewHolder {
         val v = LayoutInflater.from(parent.getContext()).inflate(R.layout.room_item, parent, false)
@@ -26,7 +31,7 @@ class RoomAdapter(private val rooms : List<Room>, private val context : Context)
 
     override fun onBindViewHolder(holder : RoomViewHolder, position : Int) {
         holder.roomName.text = rooms[position].name
-        holder.roomDistance.text = rooms[position].coordinates
+        holder.roomDistance.text = rooms[position].getDistance(userCoordinates)
         holder.roomImage.setImageResource(rooms[position].picture)
         holder.description = rooms[position].description
     }
@@ -65,5 +70,8 @@ class RoomAdapter(private val rooms : List<Room>, private val context : Context)
             context.startActivity(intent)
         }
     }
+
+    fun getUserCoordinates() = context.getSharedPreferences(USER_DATA, Context.MODE_PRIVATE)
+            .getString(USER_DISTANCE, NO_COORDINATES)
 
 }
