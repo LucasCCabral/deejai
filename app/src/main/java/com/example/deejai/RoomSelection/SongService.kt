@@ -6,6 +6,7 @@ import android.content.SharedPreferences
 import com.android.volley.*
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import com.example.deejai.Constants
 import com.google.gson.Gson
 import org.json.JSONException
 import org.json.JSONObject
@@ -17,9 +18,12 @@ class SongService(applicationContext: Context) {
     private var sharedPreferences: SharedPreferences? = null
     private var queue: RequestQueue? = null
 
-    fun SongService(context: Context) {
-        sharedPreferences = context.getSharedPreferences("SPOTIFY", 0)
-        queue = Volley.newRequestQueue(context)
+    init {
+        sharedPreferences = applicationContext.getSharedPreferences(
+            Constants.SPOTIFY_CREDENTIALS,
+            Context.MODE_PRIVATE
+        )
+        queue = Volley.newRequestQueue(applicationContext)
     }
 
     fun getSongs(): ArrayList<Song> {
@@ -27,7 +31,7 @@ class SongService(applicationContext: Context) {
     }
 
     fun getRecentlyPlayedTracks(callBack: VolleyCallBack): ArrayList<Song> {
-        val endpoint = "https://api.spotify.com/v1/me/player/recently-played"
+        val endpoint = "https://api.spotify.com/v1/playlists/37i9dQZF1EtmslFZGwD6iR/tracks"
         val jsonObjectRequest: JsonObjectRequest =
             object : JsonObjectRequest(
                 Request.Method.GET, endpoint, null,
@@ -52,7 +56,10 @@ class SongService(applicationContext: Context) {
                 override fun getHeaders(): Map<String, String> {
                     val headers: MutableMap<String, String> =
                         HashMap()
-                    val token = sharedPreferences!!.getString("token", "")
+                    val token = sharedPreferences!!.getString(
+                        Constants.SPOTIFY_TOKEN,
+                        Constants.NO_TOKEN
+                    )
                     val auth = "Bearer $token"
                     headers["Authorization"] = auth
                     return headers

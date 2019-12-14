@@ -1,19 +1,21 @@
 package com.example.deejai.RoomSelection
 
 import Song
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.deejai.Constants
 import com.example.deejai.R
+import kotlinx.android.synthetic.main.activity_room_player.*
 
 
 class RoomPlayer : AppCompatActivity() {
     private var userView: TextView? = null
     private var songView: TextView? = null
     private var addBtn: Button? = null
-    private var song: Song? = null
 
     private var songService: SongService? = null
     private var recentlyPlayedTracks: ArrayList<Song>? = null
@@ -24,10 +26,10 @@ class RoomPlayer : AppCompatActivity() {
 
         songService = SongService(applicationContext)
         userView = findViewById<View>(R.id.user) as TextView
-        songView = findViewById<View>(R.id.song) as TextView
-        addBtn = findViewById<View>(R.id.add) as Button
 
-        val sharedPreferences = getSharedPreferences("SPOTIFY", 0)
+
+        val sharedPreferences = getSharedPreferences(Constants.SPOTIFY_CREDENTIALS, Context.MODE_PRIVATE)
+        //val userToken = sharedPreferences.getString(Constants.SPOTIFY_TOKEN, Constants.NO_TOKEN)
         userView!!.setText(sharedPreferences.getString("userid", "No User"))
 
         getTracks()
@@ -44,8 +46,9 @@ class RoomPlayer : AppCompatActivity() {
 
     private fun updateSong() {
         if (recentlyPlayedTracks!!.size > 0) {
-            songView!!.text = recentlyPlayedTracks!![0].name
-            song = recentlyPlayedTracks!![0]
+            song.text = recentlyPlayedTracks!![0].name
+            song2.text = recentlyPlayedTracks!![1].name
+            song3.text = recentlyPlayedTracks!![2].name
         }
     }
 }
