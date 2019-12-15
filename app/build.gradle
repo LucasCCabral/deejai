@@ -35,6 +35,8 @@ repositories {
 }
 
 dependencies {
+    implementation project(':spotify-app-remote-release-0.7.0')
+    implementation "com.google.code.gson:gson:2.8.5"
     implementation 'com.spotify.android:auth:1.1.0'
     implementation 'androidx.browser:browser:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'

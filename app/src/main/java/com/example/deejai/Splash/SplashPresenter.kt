@@ -23,6 +23,7 @@ class SplashPresenter (private val view : ViewModel, private val context : Conte
             if(token == NO_TOKEN || token == null) {
                 view.onUnauthenticated()
             } else {
+                view.onUnauthenticated()
                 view.doAuthentication(token)
             }
 
