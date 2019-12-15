@@ -1,17 +1,27 @@
 package com.example.deejai.Splash
 
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
+import android.content.SharedPreferences.Editor
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.android.volley.RequestQueue
+import com.android.volley.toolbox.Volley
+import com.example.deejai.Constants.DEVELOPER_LOG
+import com.example.deejai.Constants.SPOTIFY_CREDENTIALS
+import com.example.deejai.Constants.USER_DATA
 import com.example.deejai.R
+import com.example.deejai.RoomSelection.SelectRoomActivity
+import com.example.deejai.RoomSelection.UserService
+import com.example.deejai.RoomSelection.VolleyCallBack
 import com.example.deejai.Splash.SplashContract.ViewModel
 import com.spotify.sdk.android.authentication.AuthenticationClient
 import com.spotify.sdk.android.authentication.AuthenticationRequest
 import com.spotify.sdk.android.authentication.AuthenticationResponse
-import android.content.Intent
-import android.util.Log
-import com.example.deejai.Constants.DEVELOPER_LOG
-import com.example.deejai.RoomSelection.SelectRoomActivity
+
 
 class SplashActivity : AppCompatActivity(), ViewModel {
 
@@ -21,9 +31,14 @@ class SplashActivity : AppCompatActivity(), ViewModel {
     private val SCOPES =
         "user-read-recently-played,user-library-modify,streaming"
     private val REQUEST_CODE = 1337
+    private var queue: RequestQueue? = null
+    private var msharedPreferences: SharedPreferences? = null
+    private var editor: Editor? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        queue = Volley.newRequestQueue(this)
+        msharedPreferences = this.getSharedPreferences(SPOTIFY_CREDENTIALS, Context.MODE_PRIVATE)
         presenter = SplashPresenter(this, this)
         presenter.tryAuthenticate()
     }
@@ -59,6 +74,7 @@ class SplashActivity : AppCompatActivity(), ViewModel {
                 AuthenticationResponse.Type.TOKEN -> {
                     Log.d(DEVELOPER_LOG, "Authentication succeeded")
                     presenter.onTokenReceived(response.accessToken)
+                    waitForUserInfo()
                 }
 
                 AuthenticationResponse.Type.ERROR -> {
@@ -70,6 +86,20 @@ class SplashActivity : AppCompatActivity(), ViewModel {
                 }
             }
         }
+    }
+
+    private fun waitForUserInfo() {
+        val userService = UserService(queue, msharedPreferences)
+        userService[object : VolleyCallBack {
+            override fun onSuccess() {
+                val user = userService.getUser()
+                if (user != null) {
+                    editor = getSharedPreferences(SPOTIFY_CREDENTIALS, Context.MODE_PRIVATE).edit().putString(USER_DATA,user.display_name)
+                }
+                Log.d("STARTING", "GOT USER INFORMATION")
+                editor?.commit()
+            }
+        }]
     }
 
 }
