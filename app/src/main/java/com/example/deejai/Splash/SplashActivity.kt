@@ -49,6 +49,7 @@ class SplashActivity : AppCompatActivity(), ViewModel {
     }
 
     override fun doAuthentication(token : String) {
+        //Log.d("doAuthentication", "already auth")
         intent = Intent(this, SelectRoomActivity::class.java)
         startActivity(intent)
         finish()
