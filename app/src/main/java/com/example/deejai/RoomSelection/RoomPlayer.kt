@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.deejai.Constants
+import com.example.deejai.Constants.USER_DATA
 import com.example.deejai.R
 import kotlinx.android.synthetic.main.activity_room_player.*
 
@@ -30,7 +31,7 @@ class RoomPlayer : AppCompatActivity() {
 
         val sharedPreferences = getSharedPreferences(Constants.SPOTIFY_CREDENTIALS, Context.MODE_PRIVATE)
         //val userToken = sharedPreferences.getString(Constants.SPOTIFY_TOKEN, Constants.NO_TOKEN)
-        userView!!.setText(sharedPreferences.getString("userid", "No User"))
+        userView!!.setText(sharedPreferences.getString(USER_DATA, "No User"))
 
         getTracks()
     }
