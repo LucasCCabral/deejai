@@ -9,10 +9,12 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.deejai.Adapters.RoomAdapter
 import com.example.deejai.AddRoomActivity
 import com.example.deejai.Constants.LOCALIZATION_CODE
 import com.example.deejai.Constants.NEW_ROOM_RESULT_CODE
 import com.example.deejai.Constants.ROOM_NAME
+import com.example.deejai.Data.Room
 import com.example.deejai.R
 import com.example.deejai.RoomSelection.SelectRoomContract.ViewModel
 import kotlinx.android.synthetic.main.select_room.*

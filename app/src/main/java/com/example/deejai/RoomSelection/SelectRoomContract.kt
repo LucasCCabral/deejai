@@ -1,5 +1,7 @@
 package com.example.deejai.RoomSelection
 
+import com.example.deejai.Data.Room
+
 interface SelectRoomContract {
 
     interface ViewModel {

@@ -1,4 +1,4 @@
-package com.example.deejai.RoomSelection
+package com.example.deejai.Adapters
 
 import android.content.Context
 import android.content.Intent
@@ -9,16 +9,16 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.cardview.widget.CardView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import android.view.LayoutInflater
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.deejai.Constants.NO_COORDINATES
 import com.example.deejai.Constants.ROOM_NAME_KEY
 import com.example.deejai.Constants.USER_DATA
 import com.example.deejai.Constants.USER_DISTANCE
+import com.example.deejai.Data.Room
 import com.example.deejai.R
+import com.example.deejai.RoomPlayer.RoomPlayer
 
 class RoomAdapter(private val rooms : List<Room>, private val context : Context) : Adapter<RoomAdapter.RoomViewHolder>() {
 

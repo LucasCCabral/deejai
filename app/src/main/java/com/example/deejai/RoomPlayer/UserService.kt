@@ -1,13 +1,14 @@
-package com.example.deejai.RoomSelection
+package com.example.deejai.RoomPlayer
 
-import User
 import android.content.SharedPreferences
 import com.android.volley.AuthFailureError
 import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.VolleyError
 import com.android.volley.toolbox.JsonObjectRequest
+import com.example.deejai.Callbacks.VolleyCallBack
 import com.example.deejai.Constants
+import com.example.deejai.Data.User
 import com.google.gson.Gson
 import org.json.JSONObject
 
@@ -33,7 +34,8 @@ class UserService(queue: RequestQueue?, sharedPreferences: SharedPreferences?) {
                 user = gson.fromJson(response.toString(), User::class.java)
                 callBack.onSuccess()
             },
-            Response.ErrorListener { error: VolleyError? -> get(object : VolleyCallBack {
+            Response.ErrorListener { error: VolleyError? -> get(object :
+                VolleyCallBack {
                 override fun onSuccess() {
 
                 }

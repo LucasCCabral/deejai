@@ -1,6 +1,5 @@
-package com.example.deejai.RoomSelection
+package com.example.deejai.RoomPlayer
 
-import Song
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
@@ -9,9 +8,12 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.deejai.Adapters.SongAdapter
 import com.example.deejai.Constants
 import com.example.deejai.Constants.USER_DATA
+import com.example.deejai.Data.Song
 import com.example.deejai.R
+import com.example.deejai.Callbacks.VolleyCallBack
 import com.spotify.android.appremote.api.ConnectionParams
 import com.spotify.android.appremote.api.Connector.ConnectionListener
 import com.spotify.android.appremote.api.SpotifyAppRemote
@@ -35,7 +37,8 @@ class RoomPlayer : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_room_player)
 
-        songService = SongService(applicationContext)
+        songService =
+            SongService(applicationContext)
         userView = findViewById<View>(R.id.user) as TextView
         val mLayoutManager: RecyclerView.LayoutManager =
             LinearLayoutManager(applicationContext)
@@ -74,7 +77,8 @@ class RoomPlayer : AppCompatActivity() {
     }
 
     private fun getTracks() {
-        songService!!.getRecentlyPlayedTracks(object : VolleyCallBack {
+        songService!!.getRecentlyPlayedTracks(object :
+            VolleyCallBack {
             override fun onSuccess() {
                 recentlyPlayedTracks = songService!!.getSongs()
                 updateSong()
@@ -96,7 +100,10 @@ class RoomPlayer : AppCompatActivity() {
             song3.text = recentlyPlayedTracks!![2].name
         }*/
 
-        val adapter = SongAdapter(modelArrayList, applicationContext)
+        val adapter = SongAdapter(
+            modelArrayList,
+            applicationContext
+        )
 
         recyclerview.adapter = adapter
     }

@@ -4,6 +4,7 @@ import android.content.Context
 import android.location.Location
 import com.example.deejai.Constants.USER_DATA
 import com.example.deejai.Constants.USER_DISTANCE
+import com.example.deejai.Data.Room
 import com.example.deejai.R
 import com.example.deejai.RoomSelection.SelectRoomContract.Presenter
 import com.example.deejai.RoomSelection.SelectRoomContract.ViewModel
@@ -18,7 +19,9 @@ class SelectRoomPresenter(private val view: ViewModel,
     }
 
     override fun addNewRoom(newRoomName: String) {
-        mockRooms.add(Room(newRoomName,
+        mockRooms.add(
+            Room(
+                newRoomName,
                 "This is a description.",
                 "-8.055513,-34.951541",
                 R.drawable.rock_symbol

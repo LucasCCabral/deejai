@@ -15,8 +15,8 @@ import com.example.deejai.Constants.SPOTIFY_CREDENTIALS
 import com.example.deejai.Constants.USER_DATA
 import com.example.deejai.R
 import com.example.deejai.RoomSelection.SelectRoomActivity
-import com.example.deejai.RoomSelection.UserService
-import com.example.deejai.RoomSelection.VolleyCallBack
+import com.example.deejai.RoomPlayer.UserService
+import com.example.deejai.Callbacks.VolleyCallBack
 import com.example.deejai.Splash.SplashContract.ViewModel
 import com.spotify.sdk.android.authentication.AuthenticationClient
 import com.spotify.sdk.android.authentication.AuthenticationRequest
@@ -29,7 +29,9 @@ class SplashActivity : AppCompatActivity(), ViewModel {
     private val REDIRECT_URI = "http://example.com/callback/"
     private val CLIENT_ID = "830150d51e934ac9a91111ef638c486e"
     private val SCOPES =
-        "user-read-recently-played,user-library-modify,streaming"
+        "user-read-recently-played,user-library-modify,streaming,user-read-playback-state, " +
+                "user-modify-playback-state, playlist-modify-public, user-library-modify, " +
+                "user-read-currently-playing"
     private val REQUEST_CODE = 1337
     private var queue: RequestQueue? = null
     private var msharedPreferences: SharedPreferences? = null
@@ -90,7 +92,8 @@ class SplashActivity : AppCompatActivity(), ViewModel {
     }
 
     private fun waitForUserInfo() {
-        val userService = UserService(queue, msharedPreferences)
+        val userService =
+            UserService(queue, msharedPreferences)
         userService[object : VolleyCallBack {
             override fun onSuccess() {
                 val user = userService.getUser()

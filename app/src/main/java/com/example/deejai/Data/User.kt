@@ -1,3 +1,5 @@
+package com.example.deejai.Data
+
 class User {
     var birthdate: String? = null
     var country: String? = null

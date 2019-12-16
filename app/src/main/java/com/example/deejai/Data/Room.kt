@@ -1,4 +1,4 @@
-package com.example.deejai.RoomSelection
+package com.example.deejai.Data
 
 import android.location.Location
 import com.example.deejai.Constants.NO_COORDINATES
