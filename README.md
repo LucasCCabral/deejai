@@ -23,3 +23,5 @@ The app can be summed up to 4 different views.
 
 # Work Division
 The app itself will be developed by both group members. Since the app uses spotify, Victor Niceas, is responsible to design the access routes for the spotify api and Lucas Cabral will be responsible for the recommendation.
+# Youtube Link
+https://youtu.be/vCHO-GnfTxk
