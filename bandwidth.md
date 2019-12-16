@@ -5,6 +5,8 @@
 
 
 Como falado anteriormente, não é ideal que exista esse cenário. Como foi abordado em sala de aula, não é aconselhado várias requisições, mesmo que sejam de pequeno tamanho, mas sim uma requisição que solicite quando possível. Como a ideia do aplicativo é ter uma playlist diferente pra cada sala, então não teria como prever cada playlist e já salvá-las em um arquivo, tornando-se nossa única opção.
+
+Esse é o código que requisitamos a playlist do usuário. Uma vez com o usuário autenticado, fazemos uma requisição usando *queue* do *Volley* colocando uma requisição do tipo GET na fila. Na resposta, é lido um jsonArray e parseado cada track da playlist. Então, uma vez tendo sucesso, é colocado o token ao lado do *Bearer* para finalizar a requisição. Por fim, adiciona-se à fila de requisições e o volley abstrai a operação jogando o resultado na *thread ui*. 
 ```kotlin
 fun getRecentlyPlayedTracks(callBack: VolleyCallBack): ArrayList<Song> {
         val endpoint = "https://api.spotify.com/v1/playlists/37i9dQZF1EtmslFZGwD6iR/tracks"
