@@ -4,7 +4,6 @@
 
 
 
-![alt_text](images/ "image_tooltip")
 ![](images/Captura%20de%20tela%20de%202019-12-15%2015-54-34.png?raw=true)
 
 
