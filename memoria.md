@@ -1,6 +1,4 @@
-**Memória**
-
-
+# Memória
 ![](images/Captura%20de%20tela%20de%202019-12-15%2016-15-03.png)
 
 
